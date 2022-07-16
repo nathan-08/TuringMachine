@@ -130,7 +130,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Adder.cpp" />
-    <ClCompile Include="TuringMaching.cpp" />
+    <ClCompile Include="TuringMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adder.h" />
