@@ -1,6 +1,12 @@
 #include <iostream>
+#include "TuringMachine.h"
+#include "Adder.h"
 using namespace std;
 
 int main(void) {
-	cout << "Am I turing complete?" << endl;
+	Adder adder;
+	deque<symbol> tape = { "11", "00", "00" }; // add 100 + 100 (binary)
+	TuringMachine::print_tape(adder(tape), cout);
+	cout << endl;
 }
+
