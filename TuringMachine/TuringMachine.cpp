@@ -21,7 +21,7 @@ TuringMachine::TuringMachine(
 	d(d)
 {}
 
-deque<symbol>& TuringMachine::operator() (deque<symbol>& tape) {
+Tape& TuringMachine::operator() (Tape& tape) {
 	symbol state = initialState;
 	size_t idx = 0;
 	while (finalStates.find(state) == finalStates.end()) {
@@ -29,17 +29,17 @@ deque<symbol>& TuringMachine::operator() (deque<symbol>& tape) {
 			auto [new_state, new_symbol, new_direction] = d.at({ state, tape.at(idx) });
 			tape.at(idx) = new_symbol; // update tape
 			state = new_state;  // update state
-			if (new_direction == L) {
+			if (new_direction == L) { // move left
 				if (idx == 0) {
-					tape.push_front("_");
+					tape.push_front(blankSymbol);
 				}
 				else {
 					--idx;
 				}
 			}
-			else {
+			else { // move right
 				++idx;
-				if (idx == tape.size()) tape.push_back("_");
+				if (idx == tape.size()) tape.push_back(blankSymbol);
 			}
 		}
 		catch (exception&) {
@@ -49,7 +49,7 @@ deque<symbol>& TuringMachine::operator() (deque<symbol>& tape) {
 	return tape;
 }
 
-void TuringMachine::print_tape(deque<symbol>& tape, ostream& os) {
+void TuringMachine::print_tape(Tape& tape, ostream& os) {
 	for_each(tape.begin(), tape.end(), [&](symbol s) {
 		os << "[" << s << "]";
 		});

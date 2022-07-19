@@ -12,6 +12,7 @@ using symbol = std::string;
 using A = std::tuple<symbol, symbol>;
 using B = std::tuple<symbol, symbol, Dir>;
 using TransitionFunction = std::map<A, B>;
+using Tape = std::deque<symbol>;
 
 class TuringMachine {
 private:
@@ -32,7 +33,7 @@ public:
 		const std::set<symbol> finalStates,
 		const TransitionFunction d
 	);
-	std::deque<symbol>& operator() (std::deque<symbol>&);
+	Tape& operator() (Tape&);
 	static void print_tape(std::deque<symbol>&, std::ostream&);
 };
 

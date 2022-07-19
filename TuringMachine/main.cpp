@@ -5,7 +5,7 @@ using namespace std;
 
 int main(void) {
 	Adder adder;
-	deque<symbol> tape = { "11", "00", "00" }; // add 100 + 100 (binary)
+	Tape tape = { "11", "00", "00" }; // add 100 + 100 (binary)
 	TuringMachine::print_tape(adder(tape), cout);
 	cout << endl;
 }
